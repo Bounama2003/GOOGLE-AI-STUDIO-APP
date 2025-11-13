@@ -1,0 +1,7 @@
+{
+  "name": "Assistant Vocal Multilingue",
+  "description": "Une application d'assistance vocale qui interagit avec les utilisateurs en français, wolof ou anglais pour les aider sur divers sujets.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
