@@ -147,12 +147,14 @@ export default function App() {
                     onmessage: async (message: LiveServerMessage) => {
                         // Handle transcription
                         if (message.serverContent?.inputTranscription) {
-                            setCurrentUserInput(currentInputTranscription.current + message.serverContent.inputTranscription.text);
-                            currentInputTranscription.current += message.serverContent.inputTranscription.text;
+                            const textChunk = message.serverContent.inputTranscription.text;
+                            setCurrentUserInput(prev => prev + textChunk);
+                            currentInputTranscription.current += textChunk;
                         }
                         if (message.serverContent?.outputTranscription) {
-                            setCurrentModelOutput(currentOutputTranscription.current + message.serverContent.outputTranscription.text);
-                            currentOutputTranscription.current += message.serverContent.outputTranscription.text;
+                            const textChunk = message.serverContent.outputTranscription.text;
+                            setCurrentModelOutput(prev => prev + textChunk);
+                            currentOutputTranscription.current += textChunk;
                         }
 
                         if (message.serverContent?.turnComplete) {
